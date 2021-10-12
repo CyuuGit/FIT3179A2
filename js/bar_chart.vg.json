@@ -1,0 +1,61 @@
+{
+	"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+	"description": "A bar chart with negative values. We can hide the axis domain line, and instead use a conditional grid color to draw a zero baseline.",
+	"title": {
+		"text": "Comparing fire damage of different States", 
+		"fontSize": 20
+	},
+	"width": "container",
+	"height": "container",
+	"data": {
+		"url": "https://raw.githubusercontent.com/CyuuGit/FIT3179Wk10/master/data/table1.csv"
+	},
+	
+	"encoding": {
+		"x": {
+			"field": "state", 
+			"type": "nominal", 
+			"title": "Jurisdiction"
+		}
+	},
+	"layer": [
+		{
+			"mark": {"type": "bar", "xOffset": -20, "size": 30, "color": "DarkRed"},
+			"encoding": {
+				"y": {
+					"field": "fire",
+					"type": "quantitative",
+					"axis": {"title": "Area in '000 hectares"}
+				}
+			}
+		},
+		{
+			"mark": {"type": "bar", "xOffset": 20, "size": 30,"color": "GoldenRod"},
+			"encoding": {
+				"y": {
+					"field": "forest",
+					"type": "quantitative"
+				}
+			}
+		},
+		{
+			"mark": {"type": "text"},
+			"data":{ 
+				"values": [
+					{"name": "Fire Area", "legendTitle": "Fire Area"},
+					{"name": "Forest Area within Fire Area", "legendTitle": "Forest Area within Fire Area"}
+				]
+			},
+			"encoding": {
+				"fill": {
+					"field": "legendTitle",
+					"type": "nominal",
+					"scale": {"range": ["DarkRed", "GoldenRod"]},
+					"legend": {"title": null, "symbolType": "circle", "orient": "bottom"}
+				}
+			}
+		}
+	]
+}
+
+	
