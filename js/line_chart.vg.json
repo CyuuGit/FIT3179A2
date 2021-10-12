@@ -1,7 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "Stock prices of 5 Tech Companies over Time.",
-    "data": {"url": "../data/air_quality.csv"},
+    "width": "container",
+    "height": "container",
+    "data": {"url": "https://raw.githubusercontent.com/CyuuGit/FIT3179A2/master/data/air_quality.csv"},
     "transform": [
         {
             "filter": "datum.Specie == 'pm25'"
@@ -12,8 +13,8 @@
       "point": true
     },
     "encoding": {
-      "x": {"timeUnit": "yearmonth", "field": "Date", "type":"ordinal"},
-      "y": {"field": "Count", "type": "quantitative"},
+      "x": {"timeUnit": "yearmonthdate", "field": "Date", "type":"ordinal"},
+      "y": {"field": "Median", "type": "quantitative"},
       "color": {"field": "City", "type": "nominal"}
     }
   }
